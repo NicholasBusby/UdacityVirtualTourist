@@ -13,6 +13,7 @@ import CoreData
 class MapController: UIViewController, MKMapViewDelegate {
     var regions = [NSManagedObject]()
     
+    @IBOutlet var longPressGesture: UILongPressGestureRecognizer!
     @IBOutlet weak var map: MKMapView!
     
     override func viewWillAppear(animated: Bool) {
@@ -39,6 +40,19 @@ class MapController: UIViewController, MKMapViewDelegate {
             let region = MKCoordinateRegion(center: coordinate, span: span)
             map.region = region
         }
+        
+        let pinsFetch = NSFetchRequest(entityName: "Pin")
+        let pinResults = Globals.managedContext().executeFetchRequest(pinsFetch, error: &error) as? [NSManagedObject]
+        if let pins = pinResults {
+            for pin in pins {
+                var annotation = MKPointAnnotation()
+                var location = CLLocationCoordinate2D(latitude: (pin.valueForKey("latitude") as! Double), longitude: (pin.valueForKey("longitude") as! Double))
+                annotation.coordinate = location
+                map.addAnnotation(annotation)
+            }
+        } else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
     }
     
     override func viewDidLoad() {
@@ -53,17 +67,40 @@ class MapController: UIViewController, MKMapViewDelegate {
         mapRegion.setValue(mapView.region.center.longitude, forKey: "longitude")
         mapRegion.setValue(mapView.region.span.latitudeDelta , forKey: "width")
         mapRegion.setValue(mapView.region.span.longitudeDelta, forKey: "height")
-    
-        var error: NSError?
+
         for reg:NSManagedObject in self.regions {
             Globals.managedContext().deleteObject(reg)
         }
         
+        var error: NSError?
         if !Globals.managedContext().save(&error) {
             println("Could not save \(error), \(error?.userInfo)")
         }
         
         self.regions = [mapRegion]
+    }
+    
+    
+    @IBAction func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.Began {
+            let touchSpot = sender.locationInView(map)
+            let mapPoint = map.convertPoint(touchSpot, toCoordinateFromView: map)
+            
+            var annotation = MKPointAnnotation()
+            annotation.coordinate = mapPoint
+            map.addAnnotation(annotation)
+            
+            let entity = NSEntityDescription.entityForName("Pin", inManagedObjectContext: Globals.managedContext())
+            let pin = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: Globals.managedContext())
+            
+            pin.setValue(mapPoint.latitude, forKey: "latitude")
+            pin.setValue(mapPoint.longitude, forKey: "longitude")
+            
+            var error: NSError?
+            if !Globals.managedContext().save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+            }
+        }
     }
     
 }
