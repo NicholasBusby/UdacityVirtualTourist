@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54575CDA1B4313360026AAFA /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54575CD91B4313360026AAFA /* MapController.swift */; };
+		547E90611B431DD000DAE08C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 547E90601B431DD000DAE08C /* CoreData.framework */; };
+		547E90631B43242800DAE08C /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547E90621B43242800DAE08C /* Globals.swift */; };
 		54CE11741B430EFF00B91F11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CE11731B430EFF00B91F11 /* AppDelegate.swift */; };
 		54CE11771B430EFF00B91F11 /* UdacityVirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 54CE11751B430EFF00B91F11 /* UdacityVirtualTourist.xcdatamodeld */; };
 		54CE11791B430EFF00B91F11 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CE11781B430EFF00B91F11 /* ViewController.swift */; };
@@ -14,6 +17,7 @@
 		54CE117E1B430EFF00B91F11 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54CE117D1B430EFF00B91F11 /* Images.xcassets */; };
 		54CE11811B430EFF00B91F11 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54CE117F1B430EFF00B91F11 /* LaunchScreen.xib */; };
 		54CE118D1B430EFF00B91F11 /* UdacityVirtualTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CE118C1B430EFF00B91F11 /* UdacityVirtualTouristTests.swift */; };
+		54CE119A1B43105500B91F11 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54CE11991B43105500B91F11 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		54575CD91B4313360026AAFA /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		547E90601B431DD000DAE08C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		547E90621B43242800DAE08C /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		54CE116E1B430EFF00B91F11 /* UdacityVirtualTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UdacityVirtualTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CE11721B430EFF00B91F11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54CE11731B430EFF00B91F11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +45,7 @@
 		54CE11861B430EFF00B91F11 /* UdacityVirtualTouristTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UdacityVirtualTouristTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		54CE118B1B430EFF00B91F11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54CE118C1B430EFF00B91F11 /* UdacityVirtualTouristTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityVirtualTouristTests.swift; sourceTree = "<group>"; };
+		54CE11991B43105500B91F11 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				547E90611B431DD000DAE08C /* CoreData.framework in Frameworks */,
+				54CE119A1B43105500B91F11 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,9 +68,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54575CD81B4313220026AAFA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				54575CD91B4313360026AAFA /* MapController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		54CE11651B430EFF00B91F11 = {
 			isa = PBXGroup;
 			children = (
+				547E90601B431DD000DAE08C /* CoreData.framework */,
+				54CE11991B43105500B91F11 /* MapKit.framework */,
 				54CE11701B430EFF00B91F11 /* UdacityVirtualTourist */,
 				54CE11891B430EFF00B91F11 /* UdacityVirtualTouristTests */,
 				54CE116F1B430EFF00B91F11 /* Products */,
@@ -79,6 +99,7 @@
 		54CE11701B430EFF00B91F11 /* UdacityVirtualTourist */ = {
 			isa = PBXGroup;
 			children = (
+				54575CD81B4313220026AAFA /* Controllers */,
 				54CE11731B430EFF00B91F11 /* AppDelegate.swift */,
 				54CE11781B430EFF00B91F11 /* ViewController.swift */,
 				54CE117A1B430EFF00B91F11 /* Main.storyboard */,
@@ -86,6 +107,7 @@
 				54CE117F1B430EFF00B91F11 /* LaunchScreen.xib */,
 				54CE11751B430EFF00B91F11 /* UdacityVirtualTourist.xcdatamodeld */,
 				54CE11711B430EFF00B91F11 /* Supporting Files */,
+				547E90621B43242800DAE08C /* Globals.swift */,
 			);
 			path = UdacityVirtualTourist;
 			sourceTree = "<group>";
@@ -215,8 +237,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54575CDA1B4313360026AAFA /* MapController.swift in Sources */,
 				54CE11791B430EFF00B91F11 /* ViewController.swift in Sources */,
 				54CE11771B430EFF00B91F11 /* UdacityVirtualTourist.xcdatamodeld in Sources */,
+				547E90631B43242800DAE08C /* Globals.swift in Sources */,
 				54CE11741B430EFF00B91F11 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +439,7 @@
 				54CE11921B430EFF00B91F11 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		54CE11931B430EFF00B91F11 /* Build configuration list for PBXNativeTarget "UdacityVirtualTouristTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +448,7 @@
 				54CE11951B430EFF00B91F11 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
