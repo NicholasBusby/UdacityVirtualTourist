@@ -49,6 +49,7 @@ class MapController: UIViewController, MKMapViewDelegate {
                 var location = CLLocationCoordinate2D(latitude: (pin.valueForKey("latitude") as! Double), longitude: (pin.valueForKey("longitude") as! Double))
                 annotation.coordinate = location
                 map.addAnnotation(annotation)
+                println("(\(location.latitude) , \(location.longitude))")
             }
         } else {
             println("Could not fetch \(error), \(error!.userInfo)")
@@ -96,6 +97,9 @@ class MapController: UIViewController, MKMapViewDelegate {
             pin.setValue(mapPoint.latitude, forKey: "latitude")
             pin.setValue(mapPoint.longitude, forKey: "longitude")
             
+            let flickr = FlickrService()
+            flickr.searchByLocation(mapPoint.latitude, longitude: mapPoint.longitude)
+            
             var error: NSError?
             if !Globals.managedContext().save(&error) {
                 println("Could not save \(error), \(error?.userInfo)")
@@ -103,4 +107,8 @@ class MapController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+        let mapPoint = map.convertPoint(view.center, toCoordinateFromView: view)
+        println("(\(mapPoint.latitude) , \(mapPoint.longitude))")
+    }
 }

@@ -18,4 +18,7 @@ class Globals {
     static func managedContext() -> NSManagedObjectContext {
         return appDelegate().managedObjectContext!
     }
+    
+    static let flickrKey = "357c8418f453971714372a3453bbbd54"
+    static let flickrSecret = "7468324ea14cd55f"
 }
